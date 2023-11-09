@@ -1,0 +1,29 @@
+# Viewer Query
+
+Este es un proyecto de aplicación que permite interactuar con datos públicos y compartir esas interacciones. 
+
+## Instalación
+
+Para instalar la aplicación, sigue estos pasos:
+
+1. 
+
+## Uso
+
+Para utilizar la aplicación, sigue estos pasos:
+
+1. 
+
+## Contribución
+
+Si deseas contribuir a este proyecto, por favor sigue estos pasos:
+
+1. Haz un fork del repositorio
+2. Crea una rama para tu contribución
+3. Realiza tus cambios y haz commit de los mismos
+4. Haz push de tus cambios a tu fork
+5. Crea un pull request para que tus cambios sean revisados
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Para más información, por favor revisa el archivo LICENSE.
