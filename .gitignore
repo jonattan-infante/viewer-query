@@ -319,3 +319,4 @@ pyrightconfig.json
 .history
 .ionide
 
+*.db
