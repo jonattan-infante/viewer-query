@@ -320,3 +320,4 @@ pyrightconfig.json
 .ionide
 
 *.db
+/data

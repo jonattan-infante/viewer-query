@@ -1,0 +1,33 @@
+version: "3"
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=viewer
+
+    ports:
+      - "5432:5432"
+
+  api:
+    build: packages/api
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=viewer
+      - BIG_QUERY_PROJECT_ID=test-ver-tech
+      - BIG_QUERY_DATASET_ID=bigquery-public-data.usfs_fia
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  ui:
+    build: packages/ui
+    ports:
+      - "9000:3000"
+    depends_on:
+      - api
