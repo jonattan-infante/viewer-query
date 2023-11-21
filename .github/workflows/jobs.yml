@@ -3,7 +3,7 @@ name: Create and publish a Docker image
 # Configures this workflow to run every time a change is pushed to the branch called `release`.
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
@@ -19,7 +19,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-      # 
+      #
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,25 +39,15 @@ jobs:
           tags: jonattan-infante-query-viewer/${{ env.IMAGE_NAME_API }}:latest
 
   build-ui-and-push-image:
+    name: publish image ui
     runs-on: ubuntu-latest
-    # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
-    permissions:
-      contents: read
-      packages: write
-      # 
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      # Uses the `docker/login-action` action to log in to the Container registry registry using the account and password that will publish the packages. Once published, the packages are scoped to the account defined here.
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: ./packages/ui
-          push: true
-          tags: jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
+      - uses: actions/checkout@v3
+      - name: Login
+        run: |
+          echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Build and Publish
+        run: |
+          docker build ./packages/ui --tag jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
+          docker push ${{ env.REGISTRY }}/jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
