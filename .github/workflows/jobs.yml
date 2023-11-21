@@ -36,7 +36,7 @@ jobs:
         with:
           context: ./packages/api
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_API }}:latest
+          tags: ${{ github.GITHUB_REPOSITORY }}/${{ env.IMAGE_NAME_API }}:latest
 
   build-ui-and-push-image:
     runs-on: ubuntu-latest
@@ -60,4 +60,4 @@ jobs:
         with:
           context: ./packages/ui
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_CLIENT }}:latest
+          tags: ${{ github.GITHUB_REPOSITORY }}/${{ env.IMAGE_NAME_CLIENT }}:latest
