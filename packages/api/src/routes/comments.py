@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from src.usecases.comments import create, read_all, read_by_id, update
-from src.dto.comments import CommentCreate, CommentUpdate, Comment
+from src.usecases.comments import create, read_all, read_by_id_query
+from src.dto.comments import CommentCreate, Comment, CommentWithUser
 
 router_comment = APIRouter(tags=['Comments'])
 
@@ -12,10 +12,6 @@ def create_comment(comment: CommentCreate) -> Comment:
 def get_all_comment() -> list[Comment]:
     return read_all()
 
-@router_comment.get("/comments/{comment_id}")
-def get_comment_by_id(comment_id: int) -> Comment:
-    return read_by_id(comment_id)
-
-@router_comment.put("/comments/{comment_id}")
-def update_comment(comment_id: int, comment: CommentUpdate) -> Comment:
-    return update(comment_id, comment.dict())
+@router_comment.get("/comments/{query_id}")
+def get_comment_by_id_query(query_id: int) -> list[CommentWithUser]:
+    return read_by_id_query(query_id)
