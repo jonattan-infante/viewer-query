@@ -13,4 +13,6 @@ RUN pip install -r requirements.txt
 EXPOSE 8000
 
 # Especifica el comando para iniciar el servidor de desarrollo
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+CMD alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000
