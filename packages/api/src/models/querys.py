@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, JSON
 from sqlalchemy.orm import relationship
 from src.models.base import Base
 
@@ -8,6 +8,8 @@ class Query(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
     comment = Column(String)
-    query = Column(String, nullable=False)
+    query = Column(JSON, nullable=False)
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship("User", backref="queries")
+
+
