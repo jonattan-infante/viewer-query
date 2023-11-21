@@ -39,15 +39,24 @@ jobs:
           tags: jonattan-infante-query-viewer/${{ env.IMAGE_NAME_API }}:latest
 
   build-ui-and-push-image:
-    name: publish image ui
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Login
-        run: |
-          echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      - name: Build and Publish
-        run: |
-          docker build ./packages/ui --tag jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
-          docker push jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./packages/ui
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_API }}:latest
