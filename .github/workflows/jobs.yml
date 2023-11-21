@@ -50,4 +50,4 @@ jobs:
       - name: Build and Publish
         run: |
           docker build ./packages/ui --tag jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
-          docker push ${{ env.REGISTRY }}/jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
+          docker push jonattan-infante-query-viewer/${{ env.IMAGE_NAME_CLIENT }}:latest
