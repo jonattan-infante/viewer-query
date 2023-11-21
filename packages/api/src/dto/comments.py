@@ -1,5 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
+from .users import User
 
 
 class Comment(BaseModel):
@@ -7,6 +8,13 @@ class Comment(BaseModel):
     comment: str
     query_id: int
     user_id: int
+
+class CommentWithUser(BaseModel):
+    id: int
+    comment: str
+    query_id: int
+    user_id: int
+    user: User
 
 class CommentCreate(BaseModel):
     comment: str
