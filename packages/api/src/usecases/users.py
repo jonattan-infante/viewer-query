@@ -13,19 +13,6 @@ def read_all():
     return session.query(User).all()
 
 
-def read_by_id(id):
-    return session.query(User).filter_by(id=id).first()
+def read_by_username(username):
+    return session.query(User).filter_by(username=username).first()
 
-
-def update(id, data):
-    comment = session.query(User).filter_by(id=id).first()
-    for key, value in data.items():
-        setattr(comment, key, value)
-    session.commit()
-    return comment
-
-
-def delete(id):
-    comment = session.query(User).filter_by(id=id).first()
-    session.delete(comment)
-    session.commit()
