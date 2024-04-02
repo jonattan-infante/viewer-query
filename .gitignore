@@ -321,3 +321,5 @@ pyrightconfig.json
 
 *.db
 /data
+
+credentials.json
