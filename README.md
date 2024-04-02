@@ -13,7 +13,25 @@ Para instalar la aplicación, sigue estos pasos:
 
 Para utilizar la aplicación, sigue estos pasos:
 
-1. 
+1. Debes crear tu cuenta antes de usar la aplicación
+
+![image](https://github.com/jonattan-infante/viewer-query/assets/23534414/99e5e514-4d94-471c-955e-abec6101acb3)
+
+2. Puedes realizar consultas sobre la tabla **bigquery-public-data.usfs_fia** que corresponde a datos de acceso abierto de United States Forest Service
+
+![image](https://github.com/jonattan-infante/viewer-query/assets/23534414/b5754265-ec16-4415-a20e-c0bda08f7e21)
+
+
+3. Podras guardar los queries con la opción "+"
+![image](https://github.com/jonattan-infante/viewer-query/assets/23534414/8f77c7be-1f44-40f5-ad40-a697965630a4)
+
+
+4. Otros usuarios podras ver los queries y agregar comentarios sobre el mismo.
+
+![image](https://github.com/jonattan-infante/viewer-query/assets/23534414/1081710e-80a3-4695-92c9-51f3ccc81bba)
+
+
+
 
 ## Contribución
 
