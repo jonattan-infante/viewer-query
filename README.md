@@ -1,12 +1,13 @@
 # Viewer Query
 
-Este es un proyecto de aplicación que permite interactuar con datos públicos y compartir esas interacciones. 
+Esta es una aplicación que permite usar BigQuery sin saber SQL, adicionalmente agrega una capa para interactuar con los datos entre diferentes usuarios por medio de un sistema de comentarios sobre los queries. 
 
 ## Instalación
 
 Para instalar la aplicación, sigue estos pasos:
 
-1. 
+1. Genera tus credenciales de Google y añada el archivo *credentials.json* en packages/api
+2. Puedes ejecutar `docker-compose up`
 
 ## Uso
 
